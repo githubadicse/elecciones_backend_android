@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.adicse.eleccion.model.MesaDeVotacion;
 import com.adicse.eleccion.model.Voto001;
+import com.adicse.eleccion.service.MesaDeVotacionService;
 import com.adicse.eleccion.service.Voto001Service;
 
 @RestController
@@ -26,6 +28,8 @@ public class Voto001Controller {
 	private Voto001Service voto001Service;
 	
 
+	@Autowired
+	MesaDeVotacionService mesaDeVotacionService;
 	
 	
 	
@@ -67,7 +71,13 @@ public class Voto001Controller {
 	@ResponseBody
 	public Voto001 postCreate(@RequestBody Voto001 voto001) {
 		voto001.setIdvoto001(0);
-		return voto001Service.create(voto001);
+		MesaDeVotacion mesaDeVotacion = mesaDeVotacionService.findbyid( voto001.getMesaDeVotacion().getIdMesaDeVotacion() ).get() ;
+		mesaDeVotacion.setFlagRegistrado(true);
+		mesaDeVotacionService.update(mesaDeVotacion);
+		
+		
+		Voto001 voto001Return = voto001Service.create(voto001);
+		return voto001Return;
 	}
 	
 	@RequestMapping("/update")

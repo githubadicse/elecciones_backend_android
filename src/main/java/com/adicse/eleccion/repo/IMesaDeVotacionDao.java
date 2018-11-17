@@ -8,7 +8,7 @@ import org.springframework.data.repository.query.Param;
 
 import com.adicse.eleccion.model.MesaDeVotacion;
 
-public interface IMesaDeVotacionDao extends CrudRepository<MesaDeVotacion, String> {
+public interface IMesaDeVotacionDao extends CrudRepository<MesaDeVotacion, Integer> {
 	
 	
 	@Query("select p from MesaDeVotacion p where p.personero.idpersonero = :idPersonero and p.flagRegistrado =:flagRegistrado")

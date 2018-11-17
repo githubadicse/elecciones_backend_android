@@ -42,7 +42,12 @@ public class Voto001Service implements IAdicseService<Voto001, Integer> {
 	@Override
 	public Voto001 create(Voto001 entidad) {
 		// TODO Auto-generated method stub
-		return null;
+		if(entidad.getIdvoto001().equals(0)) {
+			Integer id = iVoto001Dao.getMax() == null?1:iVoto001Dao.getMax() + 1;
+			entidad.setIdvoto001(id);
+		}
+		
+		return entidad;
 	}
 
 	@Override
@@ -72,7 +77,7 @@ public class Voto001Service implements IAdicseService<Voto001, Integer> {
 	@Override
 	public Optional<Voto001> findbyid(Integer id) {
 		// TODO Auto-generated method stub
-		return null;
+		return iVoto001Dao.findById(id);
 	}
 
 	@Override

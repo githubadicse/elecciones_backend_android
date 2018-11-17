@@ -42,13 +42,14 @@ public class MesaDeVotacionService implements IAdicseService<MesaDeVotacion, Int
 	@Override
 	public MesaDeVotacion create(MesaDeVotacion entidad) {
 		// TODO Auto-generated method stub
-		return null;
+
+		return iMesaDeVotacionDao.save(entidad);
 	}
 
 	@Override
 	public MesaDeVotacion update(MesaDeVotacion entidad) {
 		// TODO Auto-generated method stub
-		return null;
+		return iMesaDeVotacionDao.save(entidad);
 	}
 
 	@Override
@@ -72,7 +73,7 @@ public class MesaDeVotacionService implements IAdicseService<MesaDeVotacion, Int
 	@Override
 	public Optional<MesaDeVotacion> findbyid(Integer id) {
 		// TODO Auto-generated method stub
-		return null;
+		return iMesaDeVotacionDao.findById(id);
 	}
 
 	@Override
