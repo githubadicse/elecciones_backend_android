@@ -15,6 +15,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.adicse.eleccion.config.DatosConstantes;
 import com.adicse.eleccion.interfaces.IAdicseService;
 import com.adicse.eleccion.model.Usuario;
 import com.adicse.eleccion.repo.IUsuarioDao;
@@ -98,6 +99,8 @@ public class UsuarioService implements IAdicseService<Usuario, Integer>, UserDet
 		}
 
 		Usuario usuario = iUsuarioDao.findAllByLogin(username);
+		
+		DatosConstantes.setIdUsuario(usuario.getIdusuario());
 		
 		List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
 		

@@ -17,6 +17,7 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
+import com.adicse.eleccion.config.DatosConstantes;
 import com.adicse.eleccion.config.auth.model.UsuarioAuth;
 import com.adicse.eleccion.config.auth.service.JWTService;
 import com.adicse.eleccion.config.auth.service.JWTServiceImpl;
@@ -36,7 +37,7 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 
 	public JWTAuthenticationFilter(AuthenticationManager authenticationManager, JWTService  jwtService) {
 		this.authenticationManager = authenticationManager;
-		setRequiresAuthenticationRequestMatcher( new AntPathRequestMatcher("/usuario/login2", "POST"));
+		setRequiresAuthenticationRequestMatcher( new AntPathRequestMatcher("/usuario/do", "POST"));
 		this.jwtService = jwtService;
 	}
 
@@ -95,7 +96,7 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 		response.addHeader(JWTServiceImpl.HEADER_STRING, JWTServiceImpl.TOKEN_PREFIX + token);
 		
 		Map<String, Object> body = new HashMap<String,Object>();
-		
+		body.put("idUsuario", DatosConstantes.getIdUsuario());
 		body.put("token", token);
 		body.put("user", (User)authResult.getPrincipal() );
 		body.put("mensaje", "Hola " + ((User)authResult.getPrincipal()).getUsername() +"  has iniciado session con exito ! ");
