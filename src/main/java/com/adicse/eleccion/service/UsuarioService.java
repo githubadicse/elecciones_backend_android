@@ -1,10 +1,14 @@
 package com.adicse.eleccion.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -89,16 +93,16 @@ public class UsuarioService implements IAdicseService<Usuario, Integer>, UserDet
 		// TODO Auto-generated method stub
 		// TODO Auto-generated method stub
 		if(username == null) {
-			logger.error("No Existe el usuario");
+			//logger.error("No Existe el usuario");
 			
 		}
 
-		Usuario usuario = iUsuarioDao.findAllByLogin(us);
+		Usuario usuario = iUsuarioDao.findAllByLogin(username);
 		
 		List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
 		
 		authorities.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
-		UserDetails user = new User(username, usuario.getClave(), usuario.getActivo() , true, true, true, authorities);
+		UserDetails user = new User(username, usuario.getClave(), true , true, true, true, authorities);
 		return user;
 	}
 

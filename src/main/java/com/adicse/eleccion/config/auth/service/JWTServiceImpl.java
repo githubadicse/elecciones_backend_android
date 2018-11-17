@@ -5,7 +5,6 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Date;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -13,11 +12,7 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Component;
 import org.springframework.util.Base64Utils;
 
-import com.adicse.comercial.config.auth.SimpleGrantedAuthorityMixin;
-import com.adicse.comercial.model.PeriodoLectivo;
-import com.adicse.comercial.model.Usuario;
-import com.adicse.comercial.service.PeriodoLectivoService;
-import com.adicse.comercial.service.UsuarioService;
+import com.adicse.eleccion.config.auth.SimpleGrantedAuthorityMixin;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import io.jsonwebtoken.Claims;
@@ -36,11 +31,7 @@ public class JWTServiceImpl implements JWTService {
 	
 	public static final String HEADER_STRING = "Authorization";
 	
-	@Autowired
-	private PeriodoLectivoService periodoLectivoService;	
-	
-	@Autowired
-	private UsuarioService usuarioService;
+
 
 	@Override
 	public String create(Authentication auth) throws IOException {
@@ -52,18 +43,8 @@ public class JWTServiceImpl implements JWTService {
 
 		claims.put("authorities", new ObjectMapper().writeValueAsString(roles));
 
-		PeriodoLectivo pl = periodoLectivoService.findbyid(1).get() ;
-
 		
-		Usuario usuario = usuarioService.getAllByLogin(username);
 		claims.put("sucess", true);
-		claims.put("annoQaliwarma", pl.getAnno());
-		claims.put("numeroEntrega", pl.getNumeroEntrega());
-		claims.put("filial", usuario.getFilial().getIdfilial() );		
-		claims.put("idusuario", usuario.getIdusuario() );
-		claims.put("cntCambioClave", usuario.getCntCambioClave() );
-		
-		
 		
 		String token = Jwts.builder().setClaims(claims).setSubject(username)
 				.signWith(SignatureAlgorithm.HS512, SECRET.getBytes() ).setIssuedAt(new Date())

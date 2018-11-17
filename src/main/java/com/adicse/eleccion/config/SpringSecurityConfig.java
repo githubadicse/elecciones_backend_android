@@ -9,10 +9,12 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import com.adicse.comercial.config.auth.filter.JWTAuthenticationFilter;
-import com.adicse.comercial.config.auth.filter.JWTAuthorizationFilter;
-import com.adicse.comercial.config.auth.service.JWTService;
-import com.adicse.comercial.service.UsuarioService;
+import com.adicse.eleccion.config.auth.filter.JWTAuthenticationFilter;
+import com.adicse.eleccion.config.auth.filter.JWTAuthorizationFilter;
+import com.adicse.eleccion.config.auth.service.JWTService;
+import com.adicse.eleccion.service.UsuarioService;
+
+
 
 @Configuration
 public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {

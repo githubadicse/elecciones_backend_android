@@ -17,9 +17,9 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
-import com.adicse.comercial.config.auth.model.UsuarioAuth;
-import com.adicse.comercial.config.auth.service.JWTService;
-import com.adicse.comercial.config.auth.service.JWTServiceImpl;
+import com.adicse.eleccion.config.auth.model.UsuarioAuth;
+import com.adicse.eleccion.config.auth.service.JWTService;
+import com.adicse.eleccion.config.auth.service.JWTServiceImpl;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;

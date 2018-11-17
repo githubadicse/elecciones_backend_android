@@ -12,8 +12,10 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 
-import com.adicse.comercial.config.auth.service.JWTService;
-import com.adicse.comercial.config.auth.service.JWTServiceImpl;
+import com.adicse.eleccion.config.auth.service.JWTService;
+import com.adicse.eleccion.config.auth.service.JWTServiceImpl;
+
+
 
 public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
 	
