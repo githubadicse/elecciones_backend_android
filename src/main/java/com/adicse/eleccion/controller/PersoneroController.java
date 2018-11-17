@@ -1,5 +1,6 @@
 package com.adicse.eleccion.controller;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -13,15 +14,23 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.adicse.eleccion.model.Personero;
+import com.adicse.eleccion.pojo.PersoneroPojo;
 import com.adicse.eleccion.service.PersoneroService;
+import com.adicse.eleccion.utilitarios.ConvertidorUtilitario;
 
+@RestController
+@RequestMapping("/personero")
 public class PersoneroController {
 	
 	
 	@Autowired
 	private PersoneroService personeroService;
+	
+	@Autowired
+	private ConvertidorUtilitario convertidorUtilitario;
 	
 	
 	@RequestMapping("/pagination")
@@ -88,5 +97,33 @@ public class PersoneroController {
 	public List<Personero> getall(){
 		return personeroService.getall();
 	}	
+	
+	
+	@RequestMapping("/getPersonerosByIdUsuario")
+	@ResponseBody
+	public List<PersoneroPojo> getPersonerosByIdUsuario(@RequestParam("idUsuario")  Integer idUsuario){
+		List<Personero>  lstPersoneros = personeroService.getPersonerosByIdUsuario(idUsuario);
+		PersoneroPojo personeroPojo = null;
+		List<PersoneroPojo> lstPersoneroPojo = new ArrayList<>();
+		for(Personero row:lstPersoneros) {
+			personeroPojo = new PersoneroPojo();
+			
+			BeanUtils.copyProperties(row, personeroPojo);
+			
+			File file =new File(row.getFoto());
+			if(file.exists()) {
+				String fotoBase64 = convertidorUtilitario.encodeFileToBase64Binary(file);
+				personeroPojo.setFotoBase64(fotoBase64);
+			}
+			
+			lstPersoneroPojo.add(personeroPojo);
+			
+		}
+		return lstPersoneroPojo;
+				
+	}
+	
+	
+	
 
 }
