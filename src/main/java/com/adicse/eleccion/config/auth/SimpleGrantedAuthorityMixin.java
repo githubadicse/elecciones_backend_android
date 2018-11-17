@@ -1,4 +1,4 @@
-package com.adicse.comercial.config.auth;
+package com.adicse.eleccion.config.auth;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;

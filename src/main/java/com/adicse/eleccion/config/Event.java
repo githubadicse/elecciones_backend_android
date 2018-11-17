@@ -1,4 +1,4 @@
-package com.adicse.comercial.config;
+package com.adicse.eleccion.config;
 
 import java.util.Date;
 
