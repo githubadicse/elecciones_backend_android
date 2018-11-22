@@ -8,6 +8,7 @@ import java.util.Map;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -67,6 +68,9 @@ public class MesaDeVotacionController {
 	@ResponseBody
 	public MesaDeVotacion postCreate(@RequestBody MesaDeVotacion mesaDeVotacion) {
 		mesaDeVotacion.setIdMesaDeVotacion(0);
+		
+		
+		
 		return mesaDeVotacionService.create(mesaDeVotacion);
 	}
 	
@@ -99,6 +103,12 @@ public class MesaDeVotacionController {
 	@ResponseBody	
 	public List<MesaDeVotacion> getMesasDeVotacionByIdPersonero(@RequestParam("idPersonero") String idPersonero, @RequestParam("flagRegistrado") Boolean flagRegistrado){
 		return mesaDeVotacionService.getMesasDeVotacionByIdPersonero(idPersonero, flagRegistrado);
+	}
+	
+	@RequestMapping("/getMesaDeVotacionByIdCentroDeVotacion")
+	@ResponseBody		
+	public List<MesaDeVotacion> getMesaDeVotacionByIdCentroDeVotacion(@Param("idCentroDeVotacion") String idCentroDeVotacion){
+		return mesaDeVotacionService.getMesaDeVotacionByIdCentroDeVotacion(idCentroDeVotacion);
 	}
 
 }

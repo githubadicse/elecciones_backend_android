@@ -22,24 +22,21 @@ public class MesaDeVotacion implements Serializable {
 	@Column(name="flag_registrado")
 	private Boolean flagRegistrado;
 
-	@Column(name="local_de_votacion")
-	private String localDeVotacion;
-
 	@Column(name="numero_de_mesa")
 	private String numeroDeMesa;
 
 	@Column(name="numero_de_votantes")
 	private Integer numeroDeVotantes;
 
+	//bi-directional many-to-one association to CentroDeVotacion
+	@ManyToOne
+	@JoinColumn(name="id_centro_de_votacion")
+	private CentroDeVotacion centroDeVotacion;
+
 	//bi-directional many-to-one association to Personero
 	@ManyToOne
 	@JoinColumn(name="idpersonero")
 	private Personero personero;
-
-	//bi-directional many-to-one association to Ubigeo
-	@ManyToOne
-	@JoinColumn(name="id_ubigeo")
-	private Ubigeo ubigeo;
 
 	//bi-directional many-to-one association to Voto001
 	@OneToMany(mappedBy="mesaDeVotacion")
@@ -64,14 +61,6 @@ public class MesaDeVotacion implements Serializable {
 		this.flagRegistrado = flagRegistrado;
 	}
 
-	public String getLocalDeVotacion() {
-		return this.localDeVotacion;
-	}
-
-	public void setLocalDeVotacion(String localDeVotacion) {
-		this.localDeVotacion = localDeVotacion;
-	}
-
 	public String getNumeroDeMesa() {
 		return this.numeroDeMesa;
 	}
@@ -88,20 +77,20 @@ public class MesaDeVotacion implements Serializable {
 		this.numeroDeVotantes = numeroDeVotantes;
 	}
 
+	public CentroDeVotacion getCentroDeVotacion() {
+		return this.centroDeVotacion;
+	}
+
+	public void setCentroDeVotacion(CentroDeVotacion centroDeVotacion) {
+		this.centroDeVotacion = centroDeVotacion;
+	}
+
 	public Personero getPersonero() {
 		return this.personero;
 	}
 
 	public void setPersonero(Personero personero) {
 		this.personero = personero;
-	}
-
-	public Ubigeo getUbigeo() {
-		return this.ubigeo;
-	}
-
-	public void setUbigeo(Ubigeo ubigeo) {
-		this.ubigeo = ubigeo;
 	}
 
 	public List<Voto001> getVoto001s() {

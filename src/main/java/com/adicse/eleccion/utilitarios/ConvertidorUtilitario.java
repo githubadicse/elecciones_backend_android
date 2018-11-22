@@ -14,7 +14,8 @@ public class ConvertidorUtilitario {
     public  String encodeFileToBase64Binary(File file){
         String encodedFile = null;
         try {
-            FileInputStream fileInputStreamReader = new FileInputStream(file);
+            @SuppressWarnings("resource")
+			FileInputStream fileInputStreamReader = new FileInputStream(file);
             byte[] bytes = new byte[(int)file.length()];
             fileInputStreamReader.read(bytes);
             encodedFile = Base64.getEncoder().encodeToString(bytes);

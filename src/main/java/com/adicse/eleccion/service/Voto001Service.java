@@ -46,8 +46,8 @@ public class Voto001Service implements IAdicseService<Voto001, Integer> {
 			Integer id = iVoto001Dao.getMax() == null?1:iVoto001Dao.getMax() + 1;
 			entidad.setIdvoto001(id);
 		}
-		
-		return entidad;
+		return iVoto001Dao.save(entidad);
+
 	}
 
 	@Override

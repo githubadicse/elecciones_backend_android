@@ -68,6 +68,8 @@ public class Plantilla001Controller {
 			row.setPlantilla001(null);
 		}
 		
+		plantilla001.getPlantilla002s().sort( (a,b)-> a.getOrden().compareTo(b.getOrden()) );
+		
 		return plantilla001;
 	}
 	

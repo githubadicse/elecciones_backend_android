@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.adicse.eleccion.model.MesaDeVotacion;
 import com.adicse.eleccion.model.Voto001;
+import com.adicse.eleccion.model.Voto002;
 import com.adicse.eleccion.service.MesaDeVotacionService;
 import com.adicse.eleccion.service.Voto001Service;
 
@@ -64,19 +65,32 @@ public class Voto001Controller {
 	@RequestMapping("/edit")
 	@ResponseBody
 	public Voto001 getEdit(@RequestParam("id") Integer id) {
-		return voto001Service.findbyid(id).get();
+		Voto001 voto001 = voto001Service.findbyid(id).get();
+		
+		for(Voto002 voto002: voto001.getVoto002s()) { 
+			voto002.setVoto001(null);
+		}
+		return voto001;
 	}
 	
 	@RequestMapping("/create")
 	@ResponseBody
 	public Voto001 postCreate(@RequestBody Voto001 voto001) {
+		
 		voto001.setIdvoto001(0);
 		MesaDeVotacion mesaDeVotacion = mesaDeVotacionService.findbyid( voto001.getMesaDeVotacion().getIdMesaDeVotacion() ).get() ;
 		mesaDeVotacion.setFlagRegistrado(true);
 		mesaDeVotacionService.update(mesaDeVotacion);
 		
-		
+		for(Voto002 row: voto001.getVoto002s() ) {
+			row.setVoto001(voto001);
+		}
 		Voto001 voto001Return = voto001Service.create(voto001);
+		
+		for(Voto002 row: voto001Return.getVoto002s() ) {
+			row.setVoto001(null);
+		}		
+
 		return voto001Return;
 	}
 	

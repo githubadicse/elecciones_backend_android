@@ -18,8 +18,12 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.hibernate5.Hibernate5Module;
 import com.fasterxml.jackson.datatype.hibernate5.Hibernate5Module.Feature;
 
+
+//@EnableAutoConfiguration
 @SpringBootApplication
 public class EleccionApplication implements CommandLineRunner {
+	
+	
 	
 	
 	@Bean

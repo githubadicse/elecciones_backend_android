@@ -47,7 +47,8 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 	public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response)
 			throws AuthenticationException {
 		// TODO Auto-generated method stub
-		response.setHeader("Access-Control-Allow-Origin", "*");
+		response.setHeader("Access-Control-Allow-Origin", "*") ;
+
 		String username = obtainUsername(request);
 		String password = obtainPassword(request);
 		
