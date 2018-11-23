@@ -108,5 +108,13 @@ public class MesaDeVotacionService implements IAdicseService<MesaDeVotacion, Int
 
 	public List<MesaDeVotacion> getMesaDeVotacionByIdCentroDeVotacion(@Param("idCentroDeVotacion") String idCentroDeVotacion){
 		return iMesaDeVotacionDao.getMesaDeVotacionByIdCentroDeVotacion(idCentroDeVotacion);
-	}	
+	}
+	
+	public long getSumVotantesDepartamento(String idDepartamento) {
+		return iMesaDeVotacionDao.getSumVotantesDepartamento(idDepartamento);
+	}
+	
+	public long getSumVotantesProvincia(String idDepartamento, String idProvincia) {
+		return iMesaDeVotacionDao.getSumVotantesProvincia(idDepartamento, idProvincia);
+	}
 }
