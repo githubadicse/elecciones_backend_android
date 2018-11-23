@@ -53,7 +53,7 @@ public class Voto001Service implements IAdicseService<Voto001, Integer> {
 	@Override
 	public Voto001 update(Voto001 entidad) {
 		// TODO Auto-generated method stub
-		return null;
+		return iVoto001Dao.save(entidad);
 	}
 
 	@Override
