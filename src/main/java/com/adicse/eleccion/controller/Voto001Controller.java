@@ -99,6 +99,11 @@ public class Voto001Controller {
 	public Voto001 putUdate(@RequestBody Voto001 voto001) {
 		
 	Voto001 voto001Update = voto001Service.findbyid(voto001.getIdvoto001()).get();
+	
+		for(Voto002 row: voto001.getVoto002s() ) {
+			row.setVoto001(voto001);
+		}
+
 		
 		BeanUtils.copyProperties(voto001, voto001Update);
 		
