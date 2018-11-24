@@ -73,7 +73,7 @@ public class Voto001Controller {
 		return voto001;
 	}
 	
-	@RequestMapping("filterByNumMesa")
+	@RequestMapping("/filterByNumMesa")
 	@ResponseBody
 	public Voto001 getByNumMesa(@RequestParam("id") Integer id) {		
 		Voto001 voto001 = voto001Service.getVotoByNumeroMesa(id);
