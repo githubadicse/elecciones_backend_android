@@ -13,15 +13,14 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import com.adicse.eleccion.interfaces.IAdicseService;
 
-import com.adicse.eleccion.repo.IVoto002Dao;
+import com.adicse.eleccion.interfaces.IAdicseService;
 import com.adicse.eleccion.model.Voto002;
 import com.adicse.eleccion.pojo.ResultadoPojo;
 import com.adicse.eleccion.pojo.ResultadoResumenPojo;
+import com.adicse.eleccion.repo.IVoto002Dao;
 import com.adicse.eleccion.specification.ConvertObjectToFormatJson;
 import com.adicse.eleccion.specification.Filter;
 
@@ -116,8 +115,30 @@ public class Voto002Service implements IAdicseService<Voto002, String> {
 		return iVoto002Dao.getResultado();
 	}
 	
-	public List<ResultadoResumenPojo> getResultadoResumenDepartamento(@Param("idDepartamento") String idDepartamento){
+	public List<ResultadoResumenPojo> getResultadoResumenDepartamento(String idDepartamento){
 		return iVoto002Dao.getResultadoResumenDepartamento(idDepartamento);
+	}
+	
+	public List<ResultadoResumenPojo> getResultadoResumenDepartamentoProvincia(String idDepartamento, String idProvincia){
+		return iVoto002Dao.getResultadoResumenDepartamentoProvincia(idDepartamento, idProvincia);
+		
+	}
+	
+	public List<ResultadoResumenPojo> getResultadoResumenDepartamentoProvinciaDistrito(String idDepartamento, 
+			String idProvincia,
+			String idDistrito){
+		
+		return iVoto002Dao.getResultadoResumenDepartamentoProvinciaDistrito(idDepartamento, idProvincia, idDistrito);
+		
+	}
+	
+	public List<ResultadoResumenPojo> getResultadoResumenDepartamentoProvinciaDistritoCentroDeVotacion(
+			String idDepartamento, 
+			String idProvincia,
+			String idDistrito,
+			String idCentroDeVotacion
+			){
+		return iVoto002Dao.getResultadoResumenDepartamentoProvinciaDistritoCentroDeVotacion(idDepartamento, idProvincia, idDistrito, idCentroDeVotacion);
 	}
 
 

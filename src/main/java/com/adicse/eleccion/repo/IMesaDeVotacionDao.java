@@ -25,21 +25,40 @@ JpaSpecificationExecutor<MesaDeVotacion>
 	List<MesaDeVotacion> getMesaDeVotacionByIdCentroDeVotacion(@Param("idCentroDeVotacion") String idCentroDeVotacion);
 	
 	
-	@Query("select sum(p.numeroDeVotantes) from MesaDeVotacion p where p.centroDeVotacion.distrito.provincia.departamento.iddepartamento =:idDepartamento ")
-	long getSumVotantesDepartamento(@Param("idDepartamento") String idDepartamento);
+	@Query("select sum(p.numeroDeVotantes) from MesaDeVotacion p where p.centroDeVotacion.distrito.provincia.departamento.iddepartamento =:idDepartamento")
+	Long getSumVotantesDepartamento(@Param("idDepartamento") String idDepartamento);
 	
 	@Query("select sum(p.numeroDeVotantes) from MesaDeVotacion p where p.centroDeVotacion.distrito.provincia.departamento.iddepartamento =:idDepartamento "
 			+ " and p.centroDeVotacion.distrito.provincia.idprovincia =:idProvincia")
-	long getSumVotantesProvincia(@Param("idDepartamento") String idDepartamento, @Param("idProvincia") String idProvincia);	
+	Long getSumVotantesProvincia(@Param("idDepartamento") String idDepartamento, @Param("idProvincia") String idProvincia);	
 	
 	@Query("select sum(p.numeroDeVotantes) from MesaDeVotacion p where p.centroDeVotacion.distrito.provincia.departamento.iddepartamento =:idDepartamento "
 			+ " and p.centroDeVotacion.distrito.provincia.idprovincia =:idProvincia and p.centroDeVotacion.distrito.iddistrito =:idDistrito ")
-	long getSumVotantesDistrito(@Param("idDepartamento") String idDepartamento, @Param("idProvincia") String idProvincia, @Param("idDistrito") String idDistrito);
+	Long getSumVotantesDistrito(@Param("idDepartamento") String idDepartamento, @Param("idProvincia") String idProvincia, @Param("idDistrito") String idDistrito);
 	
 	@Query("select sum(p.numeroDeVotantes) from MesaDeVotacion p where p.centroDeVotacion.distrito.provincia.departamento.iddepartamento =:idDepartamento "
 			+ " and p.centroDeVotacion.distrito.provincia.idprovincia =:idProvincia and p.centroDeVotacion.distrito.iddistrito =:idDistrito "
 			+ " and p.centroDeVotacion.distrito.provincia.idprovincia =:idProvincia and p.centroDeVotacion.idCentroDeVotacion =:idCentroDeVotacion")
-	long getSumVotantesCentroDeVotacion(@Param("idDepartamento") String idDepartamento, @Param("idProvincia") String idProvincia, 
+	Long getSumVotantesCentroDeVotacion(@Param("idDepartamento") String idDepartamento, @Param("idProvincia") String idProvincia, 
 			@Param("idDistrito") String idDistrito, @Param("idCentroDeVotacion") String idCentroDeVotacion);			
 
+	
+	
+	
+	@Query("select count(p) from MesaDeVotacion p where p.centroDeVotacion.distrito.provincia.departamento.iddepartamento =:idDepartamento")
+	Long getCountVotantesDepartamento(@Param("idDepartamento") String idDepartamento);
+	
+	@Query("select count(p) from MesaDeVotacion p where p.centroDeVotacion.distrito.provincia.departamento.iddepartamento =:idDepartamento "
+			+ " and p.centroDeVotacion.distrito.provincia.idprovincia =:idProvincia")
+	Long getCountVotantesProvincia(@Param("idDepartamento") String idDepartamento, @Param("idProvincia") String idProvincia);	
+	
+	@Query("select count(p) from MesaDeVotacion p where p.centroDeVotacion.distrito.provincia.departamento.iddepartamento =:idDepartamento "
+			+ " and p.centroDeVotacion.distrito.provincia.idprovincia =:idProvincia and p.centroDeVotacion.distrito.iddistrito =:idDistrito ")
+	Long getCountVotantesDistrito(@Param("idDepartamento") String idDepartamento, @Param("idProvincia") String idProvincia, @Param("idDistrito") String idDistrito);
+	
+	@Query("select count(p) from MesaDeVotacion p where p.centroDeVotacion.distrito.provincia.departamento.iddepartamento =:idDepartamento "
+			+ " and p.centroDeVotacion.distrito.provincia.idprovincia =:idProvincia and p.centroDeVotacion.distrito.iddistrito =:idDistrito "
+			+ " and p.centroDeVotacion.distrito.provincia.idprovincia =:idProvincia and p.centroDeVotacion.idCentroDeVotacion =:idCentroDeVotacion")
+	Long getCountVotantesCentroDeVotacion(@Param("idDepartamento") String idDepartamento, @Param("idProvincia") String idProvincia, 
+			@Param("idDistrito") String idDistrito, @Param("idCentroDeVotacion") String idCentroDeVotacion);	
 }
