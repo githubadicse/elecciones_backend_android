@@ -73,6 +73,19 @@ public class Voto001Controller {
 		return voto001;
 	}
 	
+	@RequestMapping("filterByNumMesa")
+	@ResponseBody
+	public Voto001 getByNumMesa(@RequestParam("id") Integer id) {		
+		Voto001 voto001 = voto001Service.getVotoByNumeroMesa(id);
+		
+		if (voto001 == null) { return null;}
+		
+		for(Voto002 voto002: voto001.getVoto002s()) { 
+			voto002.setVoto001(null);
+		}
+		return voto001;
+	}
+	
 	@RequestMapping("/create")
 	@ResponseBody
 	public Voto001 postCreate(@RequestBody Voto001 voto001) {
