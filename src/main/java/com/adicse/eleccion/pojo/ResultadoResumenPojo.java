@@ -9,7 +9,12 @@ public class ResultadoResumenPojo {
 	
 	public long cntNumeroDeMesa;
 	public long numeroDeVotantes;
-	public String centroDeVotacion;
+	
+	public String nombreCentroDeVotacion;
+	public String idCentroDeVotacion;
+	
+	
+	
 	
 	public Integer idistrito;
 	public String dscdistrito;
@@ -71,6 +76,139 @@ public class ResultadoResumenPojo {
 		this._cntMesasCentroDeVotacion = _cntMesasCentroDeVotacion;
 		
 	}
+	
+
+	//Nivel de provincia
+	public ResultadoResumenPojo(
+			Integer orden,
+			String agrupacion, 
+			long cntNumeroMesa,
+			long numeroDeVotantes, 
+			String dscdepartamento,
+			String dscprovincia,
+			long voto,
+			long _totalVotantesDepartamento,
+			long _totalVotantesProvincia,
+			long _totalVotantesDistrito,
+			long _totalVotantesCentroDeVotacion,
+			
+			long _cntMesasDepartamento,
+			long _cntMesasProvincia,
+			long _cntMesasDistrito,
+			long _cntMesasCentroDeVotacion			
+			) {
+		super();
+
+		this.orden = orden;
+		this.agrupacion = agrupacion;
+		this.cntNumeroDeMesa = cntNumeroMesa;
+		this.numeroDeVotantes = numeroDeVotantes;
+		this.dscdepartamento = dscdepartamento;
+		this.dscprovincia = dscprovincia;
+		this.voto = voto;
+
+		this._totalVotantesDepartamento = _totalVotantesDepartamento;
+		this._totalVotantesProvincia = _totalVotantesProvincia;
+		this._totalVotantesDistrito = _totalVotantesDistrito;
+		this._totalVotantesCentroDeVotacion = _totalVotantesCentroDeVotacion;
+		
+		this._cntMesasDepartamento = _cntMesasDepartamento;
+		this._cntMesasProvincia = _cntMesasProvincia;
+		this._cntMesasDistrito = _cntMesasDistrito;
+		this._cntMesasCentroDeVotacion = _cntMesasCentroDeVotacion;
+		
+	}	
+	
+	//Nivel de Distrito
+	public ResultadoResumenPojo(
+			Integer orden,
+			String agrupacion, 
+			long cntNumeroMesa,
+			long numeroDeVotantes, 
+			String dscdepartamento,
+			String dscprovincia,
+			String dscdistrito,
+			long voto,
+			long _totalVotantesDepartamento,
+			long _totalVotantesProvincia,
+			long _totalVotantesDistrito,
+			long _totalVotantesCentroDeVotacion,
+			
+			long _cntMesasDepartamento,
+			long _cntMesasProvincia,
+			long _cntMesasDistrito,
+			long _cntMesasCentroDeVotacion			
+			) {
+		super();
+
+		this.orden = orden;
+		this.agrupacion = agrupacion;
+		this.cntNumeroDeMesa = cntNumeroMesa;
+		this.numeroDeVotantes = numeroDeVotantes;
+		this.dscdepartamento = dscdepartamento;
+		this.dscprovincia = dscprovincia;
+		this.dscdistrito = dscdistrito;
+		this.voto = voto;
+
+		this._totalVotantesDepartamento = _totalVotantesDepartamento;
+		this._totalVotantesProvincia = _totalVotantesProvincia;
+		this._totalVotantesDistrito = _totalVotantesDistrito;
+		this._totalVotantesCentroDeVotacion = _totalVotantesCentroDeVotacion;
+		
+		this._cntMesasDepartamento = _cntMesasDepartamento;
+		this._cntMesasProvincia = _cntMesasProvincia;
+		this._cntMesasDistrito = _cntMesasDistrito;
+		this._cntMesasCentroDeVotacion = _cntMesasCentroDeVotacion;
+		
+	}		
+	
+	
+	//Nivel de centro de votacion
+	public ResultadoResumenPojo(
+			Integer orden,
+			String agrupacion, 
+			long cntNumeroMesa,
+			long numeroDeVotantes, 
+			String dscdepartamento,
+			String dscprovincia,
+			String dscdistrito,
+			String nombreCentroDeVotacion,
+			long voto,
+			long _totalVotantesDepartamento,
+			long _totalVotantesProvincia,
+			long _totalVotantesDistrito,
+			long _totalVotantesCentroDeVotacion,
+			
+			long _cntMesasDepartamento,
+			long _cntMesasProvincia,
+			long _cntMesasDistrito,
+			long _cntMesasCentroDeVotacion			
+			) {
+		super();
+
+		this.orden = orden;
+		this.agrupacion = agrupacion;
+		this.cntNumeroDeMesa = cntNumeroMesa;
+		this.numeroDeVotantes = numeroDeVotantes;
+		this.dscdepartamento = dscdepartamento;
+		this.dscprovincia = dscprovincia;
+		this.dscdistrito = dscdistrito;
+		this.nombreCentroDeVotacion = nombreCentroDeVotacion;
+		
+		this.voto = voto;
+
+		this._totalVotantesDepartamento = _totalVotantesDepartamento;
+		this._totalVotantesProvincia = _totalVotantesProvincia;
+		this._totalVotantesDistrito = _totalVotantesDistrito;
+		this._totalVotantesCentroDeVotacion = _totalVotantesCentroDeVotacion;
+		
+		this._cntMesasDepartamento = _cntMesasDepartamento;
+		this._cntMesasProvincia = _cntMesasProvincia;
+		this._cntMesasDistrito = _cntMesasDistrito;
+		this._cntMesasCentroDeVotacion = _cntMesasCentroDeVotacion;
+		
+	}			
+	
 
 	public Integer getOrden() {
 		return orden;
@@ -113,13 +251,6 @@ public class ResultadoResumenPojo {
 		this.numeroDeVotantes = numeroDeVotantes;
 	}
 
-	public String getCentroDeVotacion() {
-		return centroDeVotacion;
-	}
-
-	public void setCentroDeVotacion(String centroDeVotacion) {
-		this.centroDeVotacion = centroDeVotacion;
-	}
 
 	public Integer getIdistrito() {
 		return idistrito;
@@ -247,6 +378,28 @@ public class ResultadoResumenPojo {
 
 	public void set_cntMesasCentroDeVotacion(long _cntMesasCentroDeVotacion) {
 		this._cntMesasCentroDeVotacion = _cntMesasCentroDeVotacion;
+	}
+
+
+
+
+	public String getNombreCentroDeVotacion() {
+		return nombreCentroDeVotacion;
+	}
+
+
+	public void setNombreCentroDeVotacion(String nombreCentroDeVotacion) {
+		this.nombreCentroDeVotacion = nombreCentroDeVotacion;
+	}
+
+
+	public String getIdCentroDeVotacion() {
+		return idCentroDeVotacion;
+	}
+
+
+	public void setIdCentroDeVotacion(String idCentroDeVotacion) {
+		this.idCentroDeVotacion = idCentroDeVotacion;
 	}	
 	
 	

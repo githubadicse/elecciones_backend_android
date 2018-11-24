@@ -11,7 +11,6 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -110,20 +109,40 @@ public class MesaDeVotacionService implements IAdicseService<MesaDeVotacion, Int
 		return iMesaDeVotacionDao.getMesaDeVotacionByIdCentroDeVotacion(idCentroDeVotacion);
 	}
 	
-	public long getSumVotantesDepartamento(String idDepartamento) {
+	public Long getSumVotantesDepartamento(String idDepartamento) {
 		return iMesaDeVotacionDao.getSumVotantesDepartamento(idDepartamento);
 	}
 	
-	public long getSumVotantesProvincia(String idDepartamento, String idProvincia) {
+	public Long getSumVotantesProvincia(String idDepartamento, String idProvincia) {
 		return iMesaDeVotacionDao.getSumVotantesProvincia(idDepartamento, idProvincia);
 	}
 	
-	public long getSumVotantesDistrito(String idDepartamento, String idProvincia, String idDistrito) {
-		return getSumVotantesDistrito(idDepartamento, idProvincia, idDistrito);
+	public Long getSumVotantesDistrito(String idDepartamento, String idProvincia, String idDistrito) {
+		return iMesaDeVotacionDao.getSumVotantesDistrito(idDepartamento, idProvincia, idDistrito);
 	}
 	
-	public long getSumVotantesCentroDeVotacion(String idDepartamento, String idProvincia, 
+	public Long getSumVotantesCentroDeVotacion(String idDepartamento, String idProvincia, 
 			String idDistrito, String idCentroDeVotacion) {
-		return getSumVotantesCentroDeVotacion(idDepartamento, idProvincia, idDistrito, idCentroDeVotacion);
+		return iMesaDeVotacionDao.getSumVotantesCentroDeVotacion(idDepartamento, idProvincia, idDistrito, idCentroDeVotacion);
 	}
+	
+	
+	
+	public Long getCountVotantesDepartamento(String idDepartamento) {
+		return iMesaDeVotacionDao.getCountVotantesDepartamento(idDepartamento);
+	}
+	
+	public Long getCountVotantesProvincia(String idDepartamento, String idProvincia) {
+		return iMesaDeVotacionDao.getCountVotantesProvincia(idDepartamento, idProvincia);
+	}
+	
+	public Long getCountVotantesDistrito(String idDepartamento, String idProvincia, String idDistrito) {
+		return iMesaDeVotacionDao.getCountVotantesDistrito(idDepartamento, idProvincia, idDistrito);
+	}
+	
+	public Long getCountVotantesCentroDeVotacion(String idDepartamento, String idProvincia, 
+			String idDistrito, String idCentroDeVotacion) {
+		return iMesaDeVotacionDao.getCountVotantesCentroDeVotacion(idDepartamento, idProvincia, idDistrito, idCentroDeVotacion);
+	}	
+	
 }

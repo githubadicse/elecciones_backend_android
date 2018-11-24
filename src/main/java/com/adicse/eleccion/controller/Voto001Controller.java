@@ -78,7 +78,9 @@ public class Voto001Controller {
 	public Voto001 getByNumMesa(@RequestParam("id") Integer id) {		
 		Voto001 voto001 = voto001Service.getVotoByNumeroMesa(id);
 		
-		if (voto001 == null) { return null;}
+		if (voto001 == null) {
+			return null;
+		}
 		
 		for(Voto002 voto002: voto001.getVoto002s()) { 
 			voto002.setVoto001(null);
@@ -111,16 +113,23 @@ public class Voto001Controller {
 	@ResponseBody
 	public Voto001 putUdate(@RequestBody Voto001 voto001) {
 		
-	Voto001 voto001Update = voto001Service.findbyid(voto001.getIdvoto001()).get();
-	
 		for(Voto002 row: voto001.getVoto002s() ) {
 			row.setVoto001(voto001);
-		}
-
+		}		
+		
+		Voto001 voto001Update = voto001Service.findbyid(voto001.getIdvoto001()).get();
 		
 		BeanUtils.copyProperties(voto001, voto001Update);
 		
-		return voto001Service.update(voto001Update);
+		Voto001 voto001Rtn = voto001Service.update(voto001Update);
+		
+		for(Voto002 row : voto001Rtn.getVoto002s()) {
+			row.setVoto001(null);
+		}
+		
+		return voto001Rtn;
+		
+		
 	}
 	
 	@RequestMapping("/delete/{id}")
