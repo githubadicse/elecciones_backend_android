@@ -78,11 +78,24 @@ public class MesaDeVotacionController {
 	@ResponseBody
 	public MesaDeVotacion putUdate(@RequestBody MesaDeVotacion mesaDeVotacion) {
 		
-	MesaDeVotacion mesaDeVotacionUpdate = mesaDeVotacionService.findbyid(mesaDeVotacion.getIdMesaDeVotacion()).get();
+		MesaDeVotacion MesaDeVotacionUpdate = mesaDeVotacionService.findbyid(mesaDeVotacion.getIdMesaDeVotacion()).get();		
 		
-		BeanUtils.copyProperties(mesaDeVotacion, mesaDeVotacionUpdate);
+		BeanUtils.copyProperties(mesaDeVotacion, MesaDeVotacionUpdate);
 		
-		return mesaDeVotacionService.update(mesaDeVotacionUpdate);
+		MesaDeVotacion MesaDeVotacionRtn = mesaDeVotacionService.update(MesaDeVotacionUpdate);
+		
+		return MesaDeVotacionRtn;
+	}
+	
+	@RequestMapping("/updates")
+	@ResponseBody
+	public boolean putUdates(@RequestBody List<MesaDeVotacion> ListMesaDeVotacion) {
+									
+		for(MesaDeVotacion row : ListMesaDeVotacion) {
+			mesaDeVotacionService.update(row);
+		}		
+		
+		return true;
 	}
 	
 	@RequestMapping("/delete/{id}")
