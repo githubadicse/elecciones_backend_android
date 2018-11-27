@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.PagingAndSortingRepository;
@@ -17,6 +18,9 @@ public interface IVoto002Dao extends CrudRepository<Voto002, String>,JpaReposito
 PagingAndSortingRepository<Voto002, String>, 
 JpaSpecificationExecutor<Voto002> {
 	
+	@Modifying
+	@Query("delete from Voto002 p where p.voto001.idvoto001 =:idVoto001")
+	void DeleteByIdVoto001(@Param("idVoto001") Integer idVoto001);
 
 	@Query("select "
 			+ " new com.adicse.eleccion.pojo.ResultadoPojo( "

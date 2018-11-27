@@ -6,6 +6,21 @@ public class TextoLine {
 	String texto;
 	
 	
+	public TextoLine() {
+	}
+	
+	
+	
+	
+	public TextoLine(Integer nrolinea, String texto) {
+		super();
+		this.nrolinea = nrolinea;
+		this.texto = texto;
+	}
+
+
+
+
 	public Integer getNrolinea() {
 		return nrolinea;
 	}

@@ -140,6 +140,11 @@ public class Voto002Service implements IAdicseService<Voto002, String> {
 			){
 		return iVoto002Dao.getResultadoResumenDepartamentoProvinciaDistritoCentroDeVotacion(idDepartamento, idProvincia, idDistrito, idCentroDeVotacion);
 	}
+	
+	
+	public void DeleteByIdVoto001(Integer idVoto001) {
+		iVoto002Dao.DeleteByIdVoto001(idVoto001);
+	}
 
 
 }

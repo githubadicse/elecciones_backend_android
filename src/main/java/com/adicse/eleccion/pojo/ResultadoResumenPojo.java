@@ -38,7 +38,11 @@ public class ResultadoResumenPojo {
 	public long _cntMesasDistrito;
 	public long _cntMesasCentroDeVotacion;
 	
-
+	public ResultadoResumenPojo() {
+		
+	}
+	
+	
 	public ResultadoResumenPojo(
 			Integer orden,
 			String agrupacion, 

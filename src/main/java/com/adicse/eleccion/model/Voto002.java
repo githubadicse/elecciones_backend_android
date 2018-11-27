@@ -3,6 +3,8 @@ package com.adicse.eleccion.model;
 import java.io.Serializable;
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 /**
  * The persistent class for the voto002 database table.

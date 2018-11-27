@@ -34,7 +34,8 @@ public class Voto001 implements Serializable {
 	private Plantilla001 plantilla001;
 
 	//bi-directional many-to-one association to Voto002
-	@OneToMany(mappedBy="voto001", cascade={CascadeType.ALL})
+	
+	@OneToMany(mappedBy="voto001", cascade={CascadeType.ALL}, fetch = FetchType.LAZY )
 	private List<Voto002> voto002s;
 
 	public Voto001() {

@@ -18,49 +18,42 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.hibernate5.Hibernate5Module;
 import com.fasterxml.jackson.datatype.hibernate5.Hibernate5Module.Feature;
 
-
 //@EnableAutoConfiguration
 @SpringBootApplication
 public class EleccionApplication implements CommandLineRunner {
-	
-	
-	
-	
+
 	@Bean
 	@Primary
 	public ObjectMapper jsonMapper() {
-	
-		
-		DateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-		//TimeZone.setDefault(TimeZone.getTimeZone("UTC"));
-		TimeZone.setDefault(TimeZone.getTimeZone("GMT"));
-		
-	    ObjectMapper mapper = new ObjectMapper();
-	    Hibernate5Module hm = new Hibernate5Module();
-	    //hm.configure(Hibernate5Module.Feature.FORCE_LAZY_LOADING, false);
-	    hm.enable(Feature.SERIALIZE_IDENTIFIER_FOR_LAZY_NOT_LOADED_OBJECTS);
-	    
-	    mapper.registerModule(hm);
-	    mapper.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
-	    
-	    // This doesn't work with Hibernate4Module :-(
-	    //mapper.setSerializationInclusion(Include.NON_NULL);
-	    mapper.setSerializationInclusion(Include.NON_EMPTY);
-	    //df.setTimeZone(TimeZone.getTimeZone("UTC"));
-	    mapper.setDateFormat(df);
-	   
-	    return mapper;
-	}	
-	
-	@Bean
-	public BCryptPasswordEncoder  passwordEncoder() {
-		return new BCryptPasswordEncoder();
-	}	
 
+		DateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+		// TimeZone.setDefault(TimeZone.getTimeZone("UTC"));
+		TimeZone.setDefault(TimeZone.getTimeZone("GMT"));
+
+		ObjectMapper mapper = new ObjectMapper();
+		Hibernate5Module hm = new Hibernate5Module();
+		hm.enable(Feature.SERIALIZE_IDENTIFIER_FOR_LAZY_NOT_LOADED_OBJECTS);
+
+		mapper.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
+
+		mapper.registerModule(hm);
+
+		mapper.setSerializationInclusion(Include.NON_EMPTY);
+
+		mapper.setDateFormat(df);
+
+		return mapper;
+	}
+
+	
+
+	@Bean
+	public BCryptPasswordEncoder passwordEncoder() {
+		return new BCryptPasswordEncoder();
+	}
 
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
-	
 
 	public static void main(String[] args) {
 		SpringApplication.run(EleccionApplication.class, args);
@@ -69,13 +62,13 @@ public class EleccionApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
-		
+
 		String passw = "admin";
-		
-		for(int i=0 ; i < 2 ; i++) {
+
+		for (int i = 0; i < 2; i++) {
 			String ps = passwordEncoder.encode(passw);
 			System.out.println(ps);
-		}		
-		
+		}
+
 	}
 }

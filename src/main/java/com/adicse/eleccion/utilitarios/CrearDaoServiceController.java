@@ -11,6 +11,7 @@ import java.util.List;
 
 public class CrearDaoServiceController {
 
+	@SuppressWarnings("unused")
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));

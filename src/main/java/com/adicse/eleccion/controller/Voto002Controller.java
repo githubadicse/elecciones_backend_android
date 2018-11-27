@@ -118,13 +118,37 @@ public class Voto002Controller {
 		Long _totalVotantesDepartamento = mesaDeVotacionService.getSumVotantesDepartamento(idDepartamento);
 		Long _cntMesasDepartamento = mesaDeVotacionService.getCountVotantesDepartamento(idDepartamento);
 		
-		
+		if(lst.size() == 0) {
+			ResultadoResumenPojo resultadoResumenPojoEmpty = new ResultadoResumenPojo();
+			resultadoResumenPojoEmpty.setOrden(0);
+			resultadoResumenPojoEmpty.setAgrupacion("--");
+			resultadoResumenPojoEmpty.setCandidato("--");
+			
+			resultadoResumenPojoEmpty.set_totalVotantesDepartamento(_totalVotantesDepartamento);
+			
+			resultadoResumenPojoEmpty.set_cntMesasDepartamento(_cntMesasDepartamento);
+			
+			resultadoResumenPojoEmpty.setDscdepartamento( resultadoResumenPojoEmpty.getDscdepartamento() ==null?"x":resultadoResumenPojoEmpty.getDscdepartamento()  );
+			resultadoResumenPojoEmpty.setDscprovincia( resultadoResumenPojoEmpty.getDscprovincia() ==null?"x":resultadoResumenPojoEmpty.getDscprovincia()  );
+			resultadoResumenPojoEmpty.setDscdistrito( resultadoResumenPojoEmpty.getDscdistrito() ==null?"x":resultadoResumenPojoEmpty.getDscdistrito()  );
+			resultadoResumenPojoEmpty.setNombreCentroDeVotacion( resultadoResumenPojoEmpty.getNombreCentroDeVotacion() ==null?"x":resultadoResumenPojoEmpty.getNombreCentroDeVotacion()  );			
+			lst.add(resultadoResumenPojoEmpty);						
+			
+		}else {
+			for(ResultadoResumenPojo row: lst) {
+				row.set_totalVotantesDepartamento(_totalVotantesDepartamento);
+				row.set_cntMesasDepartamento(_cntMesasDepartamento);
+				
+				
+				row.setDscdepartamento( row.getDscdepartamento() ==null?"x":row.getDscdepartamento()  );
+				row.setDscprovincia( row.getDscprovincia() ==null?"x":row.getDscprovincia()  );
+				row.setDscdistrito( row.getDscdistrito() ==null?"x":row.getDscdistrito()  );
+				row.setNombreCentroDeVotacion( row.getNombreCentroDeVotacion() ==null?"x":row.getNombreCentroDeVotacion()  );			
+			}			
+		}
 
 		
-		for(ResultadoResumenPojo row: lst) {
-			row.set_totalVotantesDepartamento(_totalVotantesDepartamento);
-			row.set_cntMesasDepartamento(_cntMesasDepartamento);
-		}
+
 		return lst;
 	}
 	
@@ -141,13 +165,41 @@ public class Voto002Controller {
 
 		
 		List<ResultadoResumenPojo> lst = voto002Service.getResultadoResumenDepartamentoProvincia(idDepartamento,idProvincia);
-		for(ResultadoResumenPojo row: lst) {
-			row.set_totalVotantesDepartamento(_totalVotantesDepartamento);
-			row.set_totalVotantesProvincia(_totalVotantesProvincia);
+		if(lst.size() == 0) {
+			ResultadoResumenPojo resultadoResumenPojoEmpty = new ResultadoResumenPojo();
+			resultadoResumenPojoEmpty.setOrden(0);
+			resultadoResumenPojoEmpty.setAgrupacion("--");
+			resultadoResumenPojoEmpty.setCandidato("--");
 			
-			row.set_cntMesasDepartamento(_cntMesasDepartamento);
-			row.set_cntMesasProvincia(_cntMesasProvincia);
+			resultadoResumenPojoEmpty.set_totalVotantesDepartamento(_totalVotantesDepartamento);
+			resultadoResumenPojoEmpty.set_totalVotantesProvincia(_totalVotantesProvincia);
+
+			
+			resultadoResumenPojoEmpty.set_cntMesasDepartamento(_cntMesasDepartamento);
+			resultadoResumenPojoEmpty.set_cntMesasProvincia(_cntMesasProvincia);			
+
+			
+			resultadoResumenPojoEmpty.setDscdepartamento( resultadoResumenPojoEmpty.getDscdepartamento() ==null?"x":resultadoResumenPojoEmpty.getDscdepartamento()  );
+			resultadoResumenPojoEmpty.setDscprovincia( resultadoResumenPojoEmpty.getDscprovincia() ==null?"x":resultadoResumenPojoEmpty.getDscprovincia()  );
+			resultadoResumenPojoEmpty.setDscdistrito( resultadoResumenPojoEmpty.getDscdistrito() ==null?"x":resultadoResumenPojoEmpty.getDscdistrito()  );
+			resultadoResumenPojoEmpty.setNombreCentroDeVotacion( resultadoResumenPojoEmpty.getNombreCentroDeVotacion() ==null?"x":resultadoResumenPojoEmpty.getNombreCentroDeVotacion()  );			
+			lst.add(resultadoResumenPojoEmpty);			
+			
+		}else {
+			for(ResultadoResumenPojo row: lst) {
+				row.set_totalVotantesDepartamento(_totalVotantesDepartamento);
+				row.set_totalVotantesProvincia(_totalVotantesProvincia);
+				
+				row.set_cntMesasDepartamento(_cntMesasDepartamento);
+				row.set_cntMesasProvincia(_cntMesasProvincia);
+				
+				row.setDscdepartamento( row.getDscdepartamento() ==null?"x":row.getDscdepartamento()  );
+				row.setDscprovincia( row.getDscprovincia() ==null?"x":row.getDscprovincia()  );
+				row.setDscdistrito( row.getDscdistrito() ==null?"x":row.getDscdistrito()  );
+				row.setNombreCentroDeVotacion( row.getNombreCentroDeVotacion() ==null?"x":row.getNombreCentroDeVotacion()  );			
+			}			
 		}
+
 		
 		return lst;
 	}
@@ -162,26 +214,56 @@ public class Voto002Controller {
 		Long _totalVotantesProvincia = mesaDeVotacionService.getSumVotantesProvincia(idDepartamento, idProvincia);
 		Long _totalVotantesDistrito = mesaDeVotacionService.getSumVotantesDistrito(idDepartamento, idProvincia, idDistrito);
 		
+		
+		
 		Long _cntMesasDepartamento = mesaDeVotacionService.getCountVotantesDepartamento(idDepartamento);
 		Long _cntMesasProvincia = mesaDeVotacionService.getCountVotantesProvincia(idDepartamento, idProvincia);
 		Long _cntMesasDistrito = mesaDeVotacionService.getCountVotantesDistrito(idDepartamento, idProvincia,idDistrito);
 		
 		List<ResultadoResumenPojo> lst = voto002Service.getResultadoResumenDepartamentoProvinciaDistrito(idDepartamento,idProvincia,idDistrito);
-		for(ResultadoResumenPojo row: lst) {
-			row.set_totalVotantesDepartamento(_totalVotantesDepartamento);
-			row.set_totalVotantesProvincia(_totalVotantesProvincia);
-			row.set_totalVotantesDistrito(_totalVotantesDistrito);
+		if(lst.size() == 0) {
+			ResultadoResumenPojo resultadoResumenPojoEmpty = new ResultadoResumenPojo();
+			resultadoResumenPojoEmpty.setOrden(0);
+			resultadoResumenPojoEmpty.setAgrupacion("--");
+			resultadoResumenPojoEmpty.setCandidato("--");
 			
-			row.set_cntMesasDepartamento(_cntMesasDepartamento);
-			row.set_cntMesasProvincia(_cntMesasProvincia);			
-			row.set_cntMesasDistrito(_cntMesasDistrito);
+			resultadoResumenPojoEmpty.set_totalVotantesDepartamento(_totalVotantesDepartamento);
+			resultadoResumenPojoEmpty.set_totalVotantesProvincia(_totalVotantesProvincia);
+			resultadoResumenPojoEmpty.set_totalVotantesDistrito(_totalVotantesDistrito);
+			
+			resultadoResumenPojoEmpty.set_cntMesasDepartamento(_cntMesasDepartamento);
+			resultadoResumenPojoEmpty.set_cntMesasProvincia(_cntMesasProvincia);			
+			resultadoResumenPojoEmpty.set_cntMesasDistrito(_cntMesasDistrito);
+			
+			resultadoResumenPojoEmpty.setDscdepartamento( resultadoResumenPojoEmpty.getDscdepartamento() ==null?"x":resultadoResumenPojoEmpty.getDscdepartamento()  );
+			resultadoResumenPojoEmpty.setDscprovincia( resultadoResumenPojoEmpty.getDscprovincia() ==null?"x":resultadoResumenPojoEmpty.getDscprovincia()  );
+			resultadoResumenPojoEmpty.setDscdistrito( resultadoResumenPojoEmpty.getDscdistrito() ==null?"x":resultadoResumenPojoEmpty.getDscdistrito()  );
+			resultadoResumenPojoEmpty.setNombreCentroDeVotacion( resultadoResumenPojoEmpty.getNombreCentroDeVotacion() ==null?"x":resultadoResumenPojoEmpty.getNombreCentroDeVotacion()  );			
+			lst.add(resultadoResumenPojoEmpty);
+			
+		}else {
+			for(ResultadoResumenPojo row: lst) {
+				row.set_totalVotantesDepartamento(_totalVotantesDepartamento);
+				row.set_totalVotantesProvincia(_totalVotantesProvincia);
+				row.set_totalVotantesDistrito(_totalVotantesDistrito);
+				
+				row.set_cntMesasDepartamento(_cntMesasDepartamento);
+				row.set_cntMesasProvincia(_cntMesasProvincia);			
+				row.set_cntMesasDistrito(_cntMesasDistrito);
+				
+				row.setDscdepartamento( row.getDscdepartamento() ==null?"x":row.getDscdepartamento()  );
+				row.setDscprovincia( row.getDscprovincia() ==null?"x":row.getDscprovincia()  );
+				row.setDscdistrito( row.getDscdistrito() ==null?"x":row.getDscdistrito()  );
+				row.setNombreCentroDeVotacion( row.getNombreCentroDeVotacion() ==null?"x":row.getNombreCentroDeVotacion()  );
+			}			
 		}
+
 		
 		return lst;		
 		
 	}
 	
-	@RequestMapping("/getResultadoResumenDepartamentoProvinciaDistritoCentroDeVotacion")
+	@RequestMapping("/getResultadoResumenDepartamentoProvinciaDistritoCV")
 	@ResponseBody					
 	public List<ResultadoResumenPojo> getResultadoResumenDepartamentoProvinciaDistritoCentroDeVotacion(
 			String idDepartamento, 
@@ -201,22 +283,54 @@ public class Voto002Controller {
 		Long _cntMesasCentroDeVotacion = mesaDeVotacionService.getCountVotantesCentroDeVotacion(idDepartamento, idProvincia, idDistrito, idCentroDeVotacion);
 		
 		List<ResultadoResumenPojo> lst = voto002Service.getResultadoResumenDepartamentoProvinciaDistritoCentroDeVotacion(idDepartamento, idProvincia, idDistrito, idCentroDeVotacion) ;
-		
-		for(ResultadoResumenPojo row: lst) {
-			row.set_totalVotantesDepartamento(_totalVotantesDepartamento);
-			row.set_totalVotantesProvincia(_totalVotantesProvincia);
-			row.set_totalVotantesDistrito(_totalVotantesDistrito);
-			row.set_totalVotantesCentroDeVotacion(_totalVotantesCentroDeVotacion);
+		if(lst.size() == 0) {
+			ResultadoResumenPojo resultadoResumenPojoEmpty = new ResultadoResumenPojo();
+			resultadoResumenPojoEmpty.setOrden(0);
+			resultadoResumenPojoEmpty.setAgrupacion("--");
+			resultadoResumenPojoEmpty.setCandidato("--");
 			
-			row.set_cntMesasDepartamento(_cntMesasDepartamento);
-			row.set_cntMesasProvincia(_cntMesasProvincia);			
-			row.set_cntMesasDistrito(_cntMesasDistrito);			
-			row.set_cntMesasCentroDeVotacion(_cntMesasCentroDeVotacion);
+			resultadoResumenPojoEmpty.set_totalVotantesDepartamento(_totalVotantesDepartamento);
+			resultadoResumenPojoEmpty.set_totalVotantesProvincia(_totalVotantesProvincia);
+			resultadoResumenPojoEmpty.set_totalVotantesDistrito(_totalVotantesDistrito);
+			resultadoResumenPojoEmpty.set_totalVotantesCentroDeVotacion(_totalVotantesCentroDeVotacion);
+			
+			resultadoResumenPojoEmpty.set_cntMesasDepartamento(_cntMesasDepartamento);
+			resultadoResumenPojoEmpty.set_cntMesasProvincia(_cntMesasProvincia);			
+			resultadoResumenPojoEmpty.set_cntMesasDistrito(_cntMesasDistrito);
+			resultadoResumenPojoEmpty.set_cntMesasCentroDeVotacion(_cntMesasCentroDeVotacion);
+			
+			resultadoResumenPojoEmpty.setDscdepartamento( resultadoResumenPojoEmpty.getDscdepartamento() ==null?"x":resultadoResumenPojoEmpty.getDscdepartamento()  );
+			resultadoResumenPojoEmpty.setDscprovincia( resultadoResumenPojoEmpty.getDscprovincia() ==null?"x":resultadoResumenPojoEmpty.getDscprovincia()  );
+			resultadoResumenPojoEmpty.setDscdistrito( resultadoResumenPojoEmpty.getDscdistrito() ==null?"x":resultadoResumenPojoEmpty.getDscdistrito()  );
+			resultadoResumenPojoEmpty.setNombreCentroDeVotacion( resultadoResumenPojoEmpty.getNombreCentroDeVotacion() ==null?"x":resultadoResumenPojoEmpty.getNombreCentroDeVotacion()  );			
+			lst.add(resultadoResumenPojoEmpty);			
+			
+		}else {
+			for(ResultadoResumenPojo row: lst) {
+				row.set_totalVotantesDepartamento(_totalVotantesDepartamento);
+				row.set_totalVotantesProvincia(_totalVotantesProvincia);
+				row.set_totalVotantesDistrito(_totalVotantesDistrito);
+				row.set_totalVotantesCentroDeVotacion(_totalVotantesCentroDeVotacion);
+				
+				row.set_cntMesasDepartamento(_cntMesasDepartamento);
+				row.set_cntMesasProvincia(_cntMesasProvincia);			
+				row.set_cntMesasDistrito(_cntMesasDistrito);			
+				row.set_cntMesasCentroDeVotacion(_cntMesasCentroDeVotacion);
+				
+				row.setDscdepartamento( row.getDscdepartamento() ==null?"x":row.getDscdepartamento()  );
+				row.setDscprovincia( row.getDscprovincia() ==null?"x":row.getDscprovincia()  );
+				row.setDscdistrito( row.getDscdistrito() ==null?"x":row.getDscdistrito()  );
+				row.setNombreCentroDeVotacion( row.getNombreCentroDeVotacion() ==null?"x":row.getNombreCentroDeVotacion()  );			
+			}			
+			
 		}
+
 		
 		return lst;				
 		
 	}
+	
+
 	
 
 
