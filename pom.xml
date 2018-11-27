@@ -9,7 +9,7 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>eleccion</name>
+	<name>eleccion</name> 
 	<description>backend elecciones</description>
 
 	<parent>
