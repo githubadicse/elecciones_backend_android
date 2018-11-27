@@ -40,7 +40,7 @@ public class PersoneroController {
 			@RequestParam("rows") Integer rows,
 			@RequestParam("sortdireccion") String sortdireccion,
 			@RequestParam("sortcolumn") String sortcolumn,
-			@RequestParam("filters")  Object filters		
+			@RequestParam("filters") Object filters	
 			){
 	
 		Map<String,Object> response = new HashMap<String, Object>();
@@ -48,9 +48,10 @@ public class PersoneroController {
 		Page<Personero> page = personeroService.pagination(pagenumber, rows, sortdireccion, sortcolumn, filters);
 		
 		List<Personero> lst = page.getContent() ;
-		if(lst.size() == 0 ) {
-			 lst = new ArrayList<>();
-		}
+		
+//		if(lst.size() == 0 ) {
+//			 lst = new ArrayList<>();
+//		}
 		
 		response.put("data", lst);
 		response.put("totalCount", page.getTotalElements());
