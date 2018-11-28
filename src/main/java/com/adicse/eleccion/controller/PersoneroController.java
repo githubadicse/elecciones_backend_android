@@ -71,7 +71,7 @@ public class PersoneroController {
 	@RequestMapping("/create")
 	@ResponseBody
 	public Personero postCreate(@RequestBody Personero personero) {
-		personero.setIdpersonero(""); 
+//		personero.setIdpersonero(""); 
 		return personeroService.create(personero);
 	}
 	

@@ -13,9 +13,9 @@ import org.springframework.data.repository.query.Param;
 import com.adicse.eleccion.model.Personero;
 
 public interface IPersoneroDao 
-			extends CrudRepository<Personero, Integer>,
-			PagingAndSortingRepository<Personero, Integer>,
-			JpaSpecificationExecutor<Personero>, JpaRepository<Personero,Integer>
+			extends CrudRepository<Personero, String>,
+			PagingAndSortingRepository<Personero, String>,
+			JpaSpecificationExecutor<Personero>, JpaRepository<Personero,String>
 {
 	
 	@Query("select p from Personero p where p.usuario.idusuario = :idUsuario")
