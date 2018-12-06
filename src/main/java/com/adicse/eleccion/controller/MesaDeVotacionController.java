@@ -115,7 +115,11 @@ public class MesaDeVotacionController {
 	@RequestMapping("/getMesasDeVotacionByIdPersonero")
 	@ResponseBody	
 	public List<MesaDeVotacion> getMesasDeVotacionByIdPersonero(@RequestParam("idPersonero") String idPersonero, @RequestParam("flagRegistrado") Boolean flagRegistrado){
-		return mesaDeVotacionService.getMesasDeVotacionByIdPersonero(idPersonero, flagRegistrado);
+		
+		List<MesaDeVotacion> lst = mesaDeVotacionService.getMesasDeVotacionByIdPersonero(idPersonero, flagRegistrado);
+		lst.sort((a,b)-> a.getNumeroDeMesa().compareTo(b.getNumeroDeMesa()) );
+		
+		return lst;
 	}
 	
 	@RequestMapping("/getMesaDeVotacionByIdCentroDeVotacion")

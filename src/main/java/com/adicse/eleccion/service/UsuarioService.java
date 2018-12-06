@@ -38,7 +38,7 @@ public class UsuarioService implements IAdicseService<Usuario, Integer>, UserDet
 	@Override
 	public List<Usuario> getall() {
 		// TODO Auto-generated method stub
-		return null;
+		return (List<Usuario>) iUsuarioDao.findAll();
 	}
 
 	@Override
@@ -56,7 +56,7 @@ public class UsuarioService implements IAdicseService<Usuario, Integer>, UserDet
 	@Override
 	public Usuario update(Usuario entidad) {
 		// TODO Auto-generated method stub
-		return null;
+		return iUsuarioDao.save(entidad);
 	}
 
 	@Override
