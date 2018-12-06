@@ -62,13 +62,13 @@ public class PersoneroService implements IAdicseService<Personero, String> {
 	@Override
 	public Personero create(Personero entidad) {
 		// TODO Auto-generated method stub
-		return null;
+		return iPersoneroDao.save(entidad);
 	}
 
 	@Override
 	public Personero update(Personero entidad) {
 		// TODO Auto-generated method stub
-		return null;
+		return iPersoneroDao.save(entidad);
 	}
 
 	@Override
@@ -92,7 +92,7 @@ public class PersoneroService implements IAdicseService<Personero, String> {
 	@Override
 	public Optional<Personero> findbyid(String id) {
 		// TODO Auto-generated method stub
-		return null;
+		return iPersoneroDao.findById(id);
 	}
 
 	@Override
