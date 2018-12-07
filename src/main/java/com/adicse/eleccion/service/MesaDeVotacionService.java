@@ -49,7 +49,7 @@ public class MesaDeVotacionService implements IAdicseService<MesaDeVotacion, Int
 	@Override
 	public List<MesaDeVotacion> getall() {
 		// TODO Auto-generated method stub
-		return null;
+		return (List<MesaDeVotacion>) iMesaDeVotacionDao.findAll();		
 	}
 
 	@Override
