@@ -63,7 +63,9 @@ public class EleccionApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
 
-		String passw = "admin";
+		String s = "HERMILIO ACUÑA  MARTINEZ";
+		System.out.println(s.substring(0,1));
+		String passw = "h06141684";
 
 		for (int i = 0; i < 2; i++) {
 			String ps = passwordEncoder.encode(passw);

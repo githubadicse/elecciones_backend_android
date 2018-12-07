@@ -85,6 +85,20 @@ public class Voto001Controller {
 		}
 		return voto001;
 	}
+	
+	@RequestMapping("/existeMesaRegistrada")
+	@ResponseBody
+	public Boolean getVotoByNumeroMesaBoolean(@RequestParam("idMesaDeVotacion") Integer idMesaDeVotacion) {
+		Boolean rtn = false;
+		Voto001 voto001 = voto001Service.getVotoByNumeroMesa(idMesaDeVotacion);
+		if(voto001 == null) {
+			rtn = false;
+		}else {
+			rtn = true;
+		}
+		return rtn;
+
+	}	
 
 	@PostMapping("/create")
 	@ResponseBody

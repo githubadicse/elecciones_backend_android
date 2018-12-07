@@ -25,7 +25,11 @@ public class Procesos {
 		List<Usuario> lst = usuarioService.getall();
 		
 		for(Usuario row:lst) {
-			String ps = passwordEncoder.encode(row.getLogin());
+			String dni = row.getLogin().trim();
+			String firstLetter = row.getNombres().trim().substring(0,1);
+			String clave = firstLetter.toLowerCase() + dni;
+			
+			String ps = passwordEncoder.encode(clave);
 			row.setClave(ps);
 			usuarioService.update(row);
 		}

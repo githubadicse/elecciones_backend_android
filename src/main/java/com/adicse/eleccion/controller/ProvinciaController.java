@@ -101,8 +101,9 @@ public class ProvinciaController {
 	@RequestMapping("/getProvinciaByIdDepartamento")
 	@ResponseBody	
 	public List<Provincia> getProvinciaByIdDepartamento(@RequestParam("idDepartamento") String idDepartamento){
-		
-		return provinciaService.getProvinciaByIdDepartamento(idDepartamento);
+		List<Provincia> lst = provinciaService.getProvinciaByIdDepartamento(idDepartamento);
+		lst.sort( (a,b)-> a.getDscprovincia().compareTo(b.getDscprovincia()) );
+		return lst; 
 		
 	}
 

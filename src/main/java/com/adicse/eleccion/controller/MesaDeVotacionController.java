@@ -125,7 +125,9 @@ public class MesaDeVotacionController {
 	@RequestMapping("/getMesaDeVotacionByIdCentroDeVotacion")
 	@ResponseBody		
 	public List<MesaDeVotacion> getMesaDeVotacionByIdCentroDeVotacion(@Param("idCentroDeVotacion") String idCentroDeVotacion){
-		return mesaDeVotacionService.getMesaDeVotacionByIdCentroDeVotacion(idCentroDeVotacion);
+		List<MesaDeVotacion> lst = mesaDeVotacionService.getMesaDeVotacionByIdCentroDeVotacion(idCentroDeVotacion);
+		lst.sort((a,b)-> a.getNumeroDeMesa().compareTo(b.getNumeroDeMesa()));
+		return lst;
 	}
 
 }

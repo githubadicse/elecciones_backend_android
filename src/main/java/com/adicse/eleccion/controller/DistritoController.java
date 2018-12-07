@@ -100,7 +100,10 @@ public class DistritoController {
 	@RequestMapping("/getDistritoByIdProvincia")
 	@ResponseBody	
 	public List<Distrito> getDistritoByIdProvincia(@RequestParam("idProvincia") String idProvincia){
-		return distritoService.getDistritoByIdProvincia(idProvincia);
+		
+		List<Distrito> lst = distritoService.getDistritoByIdProvincia(idProvincia);
+		lst.sort((a,b)->a.getDscdistrito().compareTo(b.getDscdistrito()) );
+		return lst;
 	}
 	
 	
