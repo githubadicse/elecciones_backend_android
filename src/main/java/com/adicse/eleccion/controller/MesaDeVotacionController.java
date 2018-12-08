@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.adicse.eleccion.model.MesaDeVotacion;
+import com.adicse.eleccion.model.Voto001;
+import com.adicse.eleccion.model.Voto002;
 import com.adicse.eleccion.service.MesaDeVotacionService;
 
 @RestController
@@ -109,6 +111,22 @@ public class MesaDeVotacionController {
 	@ResponseBody
 	public List<MesaDeVotacion> getall(){
 		return mesaDeVotacionService.getall();
+	}	
+	
+	@RequestMapping("/getallMesaVoto")
+	@ResponseBody
+	public List<MesaDeVotacion> getallMesaVoto(){
+		List<MesaDeVotacion> mesaDeVotacion = mesaDeVotacionService.getall();
+		for (MesaDeVotacion mesa: mesaDeVotacion) {
+			for (Voto001 voto: mesa.getVoto001s()) {
+				voto.setMesaDeVotacion(null);
+				for (Voto002 voto002: voto.getVoto002s()) {
+					voto002.setVoto001(null);
+				}
+			}
+		}
+		return mesaDeVotacion;
+		// return mesaDeVotacionService.getall();
 	}	
 	
 	
