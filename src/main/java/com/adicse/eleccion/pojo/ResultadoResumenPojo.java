@@ -10,10 +10,11 @@ public class ResultadoResumenPojo {
 	public long cntNumeroDeMesa;
 	public long numeroDeVotantes;
 	
+	//El ausentismo se calcula en base a las mesas contabilizadas, proyectado menos registrado
+	public long numeroDeAusentismo;
+	
 	public String nombreCentroDeVotacion;
 	public String idCentroDeVotacion;
-	
-	
 	
 	
 	public Integer idistrito;
@@ -58,7 +59,8 @@ public class ResultadoResumenPojo {
 			long _cntMesasDepartamento,
 			long _cntMesasProvincia,
 			long _cntMesasDistrito,
-			long _cntMesasCentroDeVotacion			
+			long _cntMesasCentroDeVotacion,
+			long numeroDeAusentismo
 			) {
 		super();
 
@@ -78,6 +80,7 @@ public class ResultadoResumenPojo {
 		this._cntMesasProvincia = _cntMesasProvincia;
 		this._cntMesasDistrito = _cntMesasDistrito;
 		this._cntMesasCentroDeVotacion = _cntMesasCentroDeVotacion;
+		this.numeroDeAusentismo = numeroDeAusentismo;
 		
 	}
 	
@@ -99,7 +102,8 @@ public class ResultadoResumenPojo {
 			long _cntMesasDepartamento,
 			long _cntMesasProvincia,
 			long _cntMesasDistrito,
-			long _cntMesasCentroDeVotacion			
+			long _cntMesasCentroDeVotacion,
+			long numeroDeAusentismo
 			) {
 		super();
 
@@ -120,6 +124,7 @@ public class ResultadoResumenPojo {
 		this._cntMesasProvincia = _cntMesasProvincia;
 		this._cntMesasDistrito = _cntMesasDistrito;
 		this._cntMesasCentroDeVotacion = _cntMesasCentroDeVotacion;
+		this.numeroDeAusentismo = numeroDeAusentismo;
 		
 	}	
 	
@@ -141,7 +146,8 @@ public class ResultadoResumenPojo {
 			long _cntMesasDepartamento,
 			long _cntMesasProvincia,
 			long _cntMesasDistrito,
-			long _cntMesasCentroDeVotacion			
+			long _cntMesasCentroDeVotacion	,
+			long numeroDeAusentismo
 			) {
 		super();
 
@@ -163,6 +169,7 @@ public class ResultadoResumenPojo {
 		this._cntMesasProvincia = _cntMesasProvincia;
 		this._cntMesasDistrito = _cntMesasDistrito;
 		this._cntMesasCentroDeVotacion = _cntMesasCentroDeVotacion;
+		this.numeroDeAusentismo = numeroDeAusentismo;
 		
 	}		
 	
@@ -186,7 +193,8 @@ public class ResultadoResumenPojo {
 			long _cntMesasDepartamento,
 			long _cntMesasProvincia,
 			long _cntMesasDistrito,
-			long _cntMesasCentroDeVotacion			
+			long _cntMesasCentroDeVotacion		,
+			long numeroDeAusentismo
 			) {
 		super();
 
@@ -210,6 +218,7 @@ public class ResultadoResumenPojo {
 		this._cntMesasProvincia = _cntMesasProvincia;
 		this._cntMesasDistrito = _cntMesasDistrito;
 		this._cntMesasCentroDeVotacion = _cntMesasCentroDeVotacion;
+		this.numeroDeAusentismo = numeroDeAusentismo;
 		
 	}			
 	
@@ -404,6 +413,16 @@ public class ResultadoResumenPojo {
 
 	public void setIdCentroDeVotacion(String idCentroDeVotacion) {
 		this.idCentroDeVotacion = idCentroDeVotacion;
+	}
+
+
+	public long getNumeroDeAusentismo() {
+		return numeroDeAusentismo;
+	}
+
+
+	public void setNumeroDeAusentismo(long numeroDeAusentismo) {
+		this.numeroDeAusentismo = numeroDeAusentismo;
 	}	
 	
 	

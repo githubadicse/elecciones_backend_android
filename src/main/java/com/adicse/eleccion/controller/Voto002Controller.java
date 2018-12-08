@@ -117,6 +117,7 @@ public class Voto002Controller {
 		
 		Long _totalVotantesDepartamento = mesaDeVotacionService.getSumVotantesDepartamento(idDepartamento);
 		Long _cntMesasDepartamento = mesaDeVotacionService.getCountVotantesDepartamento(idDepartamento);
+		long totalVotos = 0;
 		
 		if(lst.size() == 0) {
 			ResultadoResumenPojo resultadoResumenPojoEmpty = new ResultadoResumenPojo();
@@ -143,7 +144,11 @@ public class Voto002Controller {
 				row.setDscdepartamento( row.getDscdepartamento() ==null?"x":row.getDscdepartamento()  );
 				row.setDscprovincia( row.getDscprovincia() ==null?"x":row.getDscprovincia()  );
 				row.setDscdistrito( row.getDscdistrito() ==null?"x":row.getDscdistrito()  );
-				row.setNombreCentroDeVotacion( row.getNombreCentroDeVotacion() ==null?"x":row.getNombreCentroDeVotacion()  );			
+				row.setNombreCentroDeVotacion( row.getNombreCentroDeVotacion() ==null?"x":row.getNombreCentroDeVotacion()  );	
+				totalVotos = totalVotos + row.getVoto();
+			}			
+			for(ResultadoResumenPojo row: lst) {
+				row.setNumeroDeAusentismo(row.getNumeroDeAusentismo() - totalVotos);
 			}			
 		}
 
@@ -165,6 +170,7 @@ public class Voto002Controller {
 
 		
 		List<ResultadoResumenPojo> lst = voto002Service.getResultadoResumenDepartamentoProvincia(idDepartamento,idProvincia);
+		long totalVotos = 0;
 		if(lst.size() == 0) {
 			ResultadoResumenPojo resultadoResumenPojoEmpty = new ResultadoResumenPojo();
 			resultadoResumenPojoEmpty.setOrden(0);
@@ -196,7 +202,11 @@ public class Voto002Controller {
 				row.setDscdepartamento( row.getDscdepartamento() ==null?"x":row.getDscdepartamento()  );
 				row.setDscprovincia( row.getDscprovincia() ==null?"x":row.getDscprovincia()  );
 				row.setDscdistrito( row.getDscdistrito() ==null?"x":row.getDscdistrito()  );
-				row.setNombreCentroDeVotacion( row.getNombreCentroDeVotacion() ==null?"x":row.getNombreCentroDeVotacion()  );			
+				row.setNombreCentroDeVotacion( row.getNombreCentroDeVotacion() ==null?"x":row.getNombreCentroDeVotacion()  );
+				totalVotos = totalVotos + row.getVoto();
+			}			
+			for(ResultadoResumenPojo row: lst) {
+				row.setNumeroDeAusentismo(row.getNumeroDeAusentismo() - totalVotos);
 			}			
 		}
 
@@ -221,6 +231,7 @@ public class Voto002Controller {
 		Long _cntMesasDistrito = mesaDeVotacionService.getCountVotantesDistrito(idDepartamento, idProvincia,idDistrito);
 		
 		List<ResultadoResumenPojo> lst = voto002Service.getResultadoResumenDepartamentoProvinciaDistrito(idDepartamento,idProvincia,idDistrito);
+		long totalVotos = 0;
 		if(lst.size() == 0) {
 			ResultadoResumenPojo resultadoResumenPojoEmpty = new ResultadoResumenPojo();
 			resultadoResumenPojoEmpty.setOrden(0);
@@ -255,7 +266,13 @@ public class Voto002Controller {
 				row.setDscprovincia( row.getDscprovincia() ==null?"x":row.getDscprovincia()  );
 				row.setDscdistrito( row.getDscdistrito() ==null?"x":row.getDscdistrito()  );
 				row.setNombreCentroDeVotacion( row.getNombreCentroDeVotacion() ==null?"x":row.getNombreCentroDeVotacion()  );
-			}			
+				totalVotos = totalVotos + row.getVoto();
+				
+			}	
+			for(ResultadoResumenPojo row: lst) {
+				row.setNumeroDeAusentismo(row.getNumeroDeAusentismo() - totalVotos);
+			}
+			
 		}
 
 		
@@ -282,6 +299,7 @@ public class Voto002Controller {
 		Long _cntMesasDistrito = mesaDeVotacionService.getCountVotantesDistrito(idDepartamento, idProvincia,idDistrito);		
 		Long _cntMesasCentroDeVotacion = mesaDeVotacionService.getCountVotantesCentroDeVotacion(idDepartamento, idProvincia, idDistrito, idCentroDeVotacion);
 		
+		long totalVotos = 0;
 		List<ResultadoResumenPojo> lst = voto002Service.getResultadoResumenDepartamentoProvinciaDistritoCentroDeVotacion(idDepartamento, idProvincia, idDistrito, idCentroDeVotacion) ;
 		if(lst.size() == 0) {
 			ResultadoResumenPojo resultadoResumenPojoEmpty = new ResultadoResumenPojo();
@@ -320,7 +338,11 @@ public class Voto002Controller {
 				row.setDscdepartamento( row.getDscdepartamento() ==null?"x":row.getDscdepartamento()  );
 				row.setDscprovincia( row.getDscprovincia() ==null?"x":row.getDscprovincia()  );
 				row.setDscdistrito( row.getDscdistrito() ==null?"x":row.getDscdistrito()  );
-				row.setNombreCentroDeVotacion( row.getNombreCentroDeVotacion() ==null?"x":row.getNombreCentroDeVotacion()  );			
+				row.setNombreCentroDeVotacion( row.getNombreCentroDeVotacion() ==null?"x":row.getNombreCentroDeVotacion()  );
+				totalVotos = totalVotos + row.getVoto();
+			}
+			for(ResultadoResumenPojo row: lst) {
+				row.setNumeroDeAusentismo(row.getNumeroDeAusentismo() - totalVotos);
 			}			
 			
 		}

@@ -61,7 +61,7 @@ public class Voto001Service implements IAdicseService<Voto001, Integer> {
 	public Voto001 update(Voto001 entidad) {
 		// TODO Auto-generated method stub
 		
-		Voto001 voto001Update = iVoto001Dao.findById(1).get();
+		Voto001 voto001Update = iVoto001Dao.findById(entidad.getIdvoto001()).get();
 
 		BeanUtils.copyProperties(entidad, voto001Update);
 		for (Voto002 row : voto001Update.getVoto002s()) {

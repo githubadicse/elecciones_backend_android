@@ -67,7 +67,8 @@ JpaSpecificationExecutor<Voto002> {
 			+ "sum(0) as _cntMesasDepartamento,"
 			+ "sum(0) as _cntMesasProvincia,"
 			+ "sum(0) as _cntMesasDistrito,"
-			+ "sum(0) as _cntMesasCentroDeVotacion"			
+			+ "sum(0) as _cntMesasCentroDeVotacion,"
+			+ " (sum(p.voto001.mesaDeVotacion.numeroDeVotantes) - sum(0)) as numeroDeAusentismo "			
 			
 			+ ")  from Voto002 p  "
 			+ "where p.voto001.mesaDeVotacion.centroDeVotacion.distrito.provincia.departamento.iddepartamento =:idDepartamento "
@@ -103,7 +104,8 @@ JpaSpecificationExecutor<Voto002> {
 			+ "sum(0) as _cntMesasDepartamento,"
 			+ "sum(0) as _cntMesasProvincia,"
 			+ "sum(0) as _cntMesasDistrito,"
-			+ "sum(0) as _cntMesasCentroDeVotacion"			
+			+ "sum(0) as _cntMesasCentroDeVotacion,"
+			+ " (sum(p.voto001.mesaDeVotacion.numeroDeVotantes) - sum(0)) as numeroDeAusentismo "
 			
 			+ ")  from Voto002 p  "
 			+ "where p.voto001.mesaDeVotacion.centroDeVotacion.distrito.provincia.departamento.iddepartamento =:idDepartamento and "
@@ -142,7 +144,8 @@ JpaSpecificationExecutor<Voto002> {
 			+ "sum(0) as _cntMesasDepartamento,"
 			+ "sum(0) as _cntMesasProvincia,"
 			+ "sum(0) as _cntMesasDistrito,"
-			+ "sum(0) as _cntMesasCentroDeVotacion"			
+			+ "sum(0) as _cntMesasCentroDeVotacion, "
+			+ " (sum(p.voto001.mesaDeVotacion.numeroDeVotantes) - sum(0)) as numeroDeAusentismo "
 			
 			+ ")  from Voto002 p  "
 			+ "where p.voto001.mesaDeVotacion.centroDeVotacion.distrito.provincia.departamento.iddepartamento =:idDepartamento and "
@@ -185,7 +188,8 @@ JpaSpecificationExecutor<Voto002> {
 			+ "sum(0) as _cntMesasDepartamento,"
 			+ "sum(0) as _cntMesasProvincia,"
 			+ "sum(0) as _cntMesasDistrito,"
-			+ "sum(0) as _cntMesasCentroDeVotacion"			
+			+ "sum(0) as _cntMesasCentroDeVotacion,"
+			+ " (sum(p.voto001.mesaDeVotacion.numeroDeVotantes) - sum(0)) as numeroDeAusentismo "
 			
 			+ ")  from Voto002 p  "
 			+ "where p.voto001.mesaDeVotacion.centroDeVotacion.distrito.provincia.departamento.iddepartamento =:idDepartamento and "
